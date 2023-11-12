@@ -22,6 +22,12 @@ namespace DataAccessLayer.Repository
             return _context.Set<T>().Find(id);
         }
 
+        public List<T> GetList()
+        {
+            using var c = new Context();
+            return c.Set<T>().ToList();
+        }
+
         public void Insert(T t)
         {
             _context.Add(t);

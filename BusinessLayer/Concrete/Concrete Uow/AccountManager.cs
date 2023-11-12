@@ -27,6 +27,11 @@ namespace BusinessLayer.Concrete.Concrete_Uow
             return _accountDal.GetByID(id);
         }
 
+        public List<Account> TGetlist()
+        {
+            return _accountDal.GetList();
+        }
+
         public void TInsert(Account t)
         {
             _accountDal.Insert(t);

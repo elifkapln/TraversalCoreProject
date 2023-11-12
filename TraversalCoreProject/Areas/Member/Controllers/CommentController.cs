@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using BusinessLayer.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProject.Areas.Member.Controllers
@@ -7,9 +8,17 @@ namespace TraversalCoreProject.Areas.Member.Controllers
     [AllowAnonymous]
     public class CommentController : Controller
     {
+        private readonly ICommentService _commentService;
+
+        public CommentController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var values = _commentService.TGetListCommentWithDestination();
+            return View(values);
         }
     }
 }

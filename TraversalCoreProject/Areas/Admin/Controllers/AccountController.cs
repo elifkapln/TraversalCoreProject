@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Abstract.AbstractUow;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Abstract.AbstractUow;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,12 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             _accountService.TMultiUpdate(modifiedAccounts);
 
             return View();
+        }
+
+        public IActionResult Amounts()
+        {
+            var values = _accountService.TGetlist();
+            return View(values);
         }
     }
 }

@@ -13,5 +13,6 @@ namespace DataAccessLayer.Abstract
         void Update(T t);
         void MultiUpdate(List<T> t);
         T GetByID(int id);
+        List<T> GetList();
     }
 }

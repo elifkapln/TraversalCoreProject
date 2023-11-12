@@ -58,8 +58,9 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         {
             p.AppUserId = 4;
             p.Status = "Onay Bekliyor";
+            p.DestinationID = 5;
             reservationManager.Tadd(p);
-            return RedirectToAction("MyCurrentReservation");
+            return RedirectToAction("MyApprovalReservation");
         }
 
         public IActionResult Deneme()

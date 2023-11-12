@@ -1,14 +1,16 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Comment>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    int count = 0;
 }
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Yorumlarım</h4>
+                <h4 class="card-title">Yorumlar</h4>
                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
@@ -21,10 +23,36 @@
             </div>
             <div class="card-content collapse show">
                 <div class="card-body">
-                    <p class="card-text">Rotalara yapmış olduğunuz yorumlarınızı bu sayfada görebiliriniz.</p>
+                    <p class="card-text">Web Sitemiz Traversal üzerinde yapmış olduğunuz seyahatlere ait yorumlara aşağıdan erişebilirsiniz.</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ziyaretçi</th>
+                                    <th>Lokasyon</th>
+                                    <th>Rezervasyon Tarihi</th>
+                                    <th>Yorum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.CommentUser</td>
+                                        <td>@item.Destination.City</td>
+                                        <td>@(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))</td>
+                                        <td>@item.CommentContent</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
